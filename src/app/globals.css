@@ -23,12 +23,27 @@
   --color-marigold: #D9822B;
 }
 
+html.lenis, html.lenis body {
+  height: auto;
+}
+
 html, body {
   background-color: #F4F0E8;
   color: #2B2A27;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 .font-serif-display {
