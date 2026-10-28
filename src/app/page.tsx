@@ -109,7 +109,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full" suppressHydrationWarning>
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-24">
         <FogField />
