@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FogField from '@/components/canvas/FogField';
 import CandleCanvas from '@/components/canvas/CandleCanvas';
 import { INITIAL_GHOSTS } from '@/data/ghosts';
-import { WifiOff, ArrowRight } from 'lucide-react';
+import { WifiOff, ArrowRight, ArrowLeft } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,19 +56,22 @@ export default function HomePage() {
         });
       }
 
-      // 2. Horizontal drift on desktop
-      if (horizontalSectionRef.current && horizontalTrainRef.current) {
-        gsap.to(horizontalTrainRef.current, {
-          x: () => (window.innerWidth < 768 ? 0 : -(horizontalTrainRef.current ? horizontalTrainRef.current.scrollWidth - window.innerWidth + 150 : 0)),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: horizontalSectionRef.current,
-            pin: true,
-            scrub: 1,
-            end: () => `+=${horizontalTrainRef.current ? horizontalTrainRef.current.scrollWidth : 2000}`,
-            invalidateOnRefresh: true,
-          },
-        });
+      // 2. Subtle horizontal drift on scroll without trapping/locking vertical scroll
+      if (horizontalTrainRef.current && horizontalSectionRef.current) {
+        gsap.fromTo(
+          horizontalTrainRef.current,
+          { x: 30 },
+          {
+            x: -60,
+            ease: 'power1.out',
+            scrollTrigger: {
+              trigger: horizontalSectionRef.current,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.2,
+            },
+          }
+        );
       }
     });
 
@@ -76,7 +79,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-x-clip">
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-24">
         <FogField />
@@ -161,25 +164,58 @@ export default function HomePage() {
       {/* HORIZONTAL DRIFT OF GHOSTS */}
       <section
         ref={horizontalSectionRef}
-        className="relative py-24 bg-[#F4F0E8] hairline-b overflow-hidden"
+        className="relative py-24 bg-[#F4F0E8] hairline-b"
       >
-        <div className="max-w-7xl mx-auto px-6 mb-12">
-          <div className="font-mono-code text-[10px] tracking-[0.25em] text-[#6F6B62] uppercase mb-2">
-            Drifting Sheets — Six Artifacts
+        <div className="max-w-7xl mx-auto px-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div className="font-mono-code text-[10px] tracking-[0.25em] text-[#6F6B62] uppercase mb-2">
+              Drifting Sheets - Six Artifacts
+            </div>
+            <h2 className="font-serif-display text-3xl sm:text-5xl text-[#2B2A27]">
+              Fossils of intention, resting on your drive.
+            </h2>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-5xl text-[#2B2A27]">
-            Fossils of intention, resting on your drive.
-          </h2>
+
+          {/* Quick Carousel Controls */}
+          <div className="flex items-center gap-3">
+            <span className="font-mono-code text-[10px] text-[#6F6B62] tracking-wider uppercase hidden sm:inline">
+              SCROLL OR BROWSE
+            </span>
+            <button
+              onClick={() => {
+                if (horizontalTrainRef.current) {
+                  horizontalTrainRef.current.scrollBy({ left: -460, behavior: 'smooth' });
+                }
+              }}
+              className="p-3 bg-[#EFEADF] hover:bg-[#FAF8F3] hairline-all text-[#2B2A27] transition-colors interactive flex items-center justify-center cursor-pointer"
+              aria-label="Previous artifact"
+              title="Previous artifact"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => {
+                if (horizontalTrainRef.current) {
+                  horizontalTrainRef.current.scrollBy({ left: 460, behavior: 'smooth' });
+                }
+              }}
+              className="p-3 bg-[#EFEADF] hover:bg-[#FAF8F3] hairline-all text-[#2B2A27] transition-colors interactive flex items-center justify-center cursor-pointer"
+              aria-label="Next artifact"
+              title="Next artifact"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         <div
           ref={horizontalTrainRef}
-          className="flex flex-col md:flex-row gap-8 px-6 md:px-12"
+          className="flex gap-8 px-6 md:px-12 overflow-x-auto no-scrollbar scroll-smooth pb-8"
         >
           {sixGhosts.map((ghost, index) => (
             <div
               key={ghost.id}
-              className="vellum-sheet w-full md:w-[420px] flex-shrink-0 p-8 relative md:hover:-translate-y-2 transition-transform duration-400"
+              className="vellum-sheet w-[320px] sm:w-[420px] flex-shrink-0 p-8 relative hover:-translate-y-2 transition-transform duration-300"
               style={{
                 transform: index % 2 === 0 ? 'rotate(0.6deg)' : 'rotate(-0.5deg)',
               }}
@@ -207,9 +243,10 @@ export default function HomePage() {
                 </span>
                 <Link
                   href={`/vigil?ghost=${ghost.id}`}
-                  className="font-mono-code text-[10px] tracking-widest text-[#2B2A27] hover:text-[#D9822B] interactive"
+                  className="font-mono-code text-[10px] tracking-widest text-[#2B2A27] hover:text-[#D9822B] interactive flex items-center gap-1"
                 >
-                  READ EPITAPH &rarr;
+                  <span>READ EPITAPH</span>
+                  <span>&rarr;</span>
                 </Link>
               </div>
             </div>
