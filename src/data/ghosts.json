@@ -1,0 +1,334 @@
+[
+  {
+    "id": "unsent-apology",
+    "title": "unsent-to-elena.txt",
+    "type": "draft",
+    "originDate": "October 14, 2021",
+    "abandonedDate": "October 15, 2021",
+    "daysAbandoned": 1840,
+    "snippet": "I did not leave because I stopped believing in what you said. I left because the silence in the apartment was vibrating at the exact pitch of my own dread, just before the train...",
+    "path": "~/Notes/Drafts/unsent-to-elena.txt",
+    "size": "1.4 KB",
+    "epitaph": {
+      "whatItWas": "A letter of contrition composed between 2:24 AM and dawn, never sent.",
+      "whenItDied": "October 15, 2021, when the laptop was closed.",
+      "whatItWasTryingToBecome": "A bridge across three unspoken months, and an admission that silence is cruelty.",
+      "fullText": "Here lies an apology that arrived at every correct truth except the courage to be delivered. It spent three years waiting in the Drafts folder, until the recipient moved across three time zones and the words turned to dust."
+    },
+    "revivalStep": "Do not send the raw file. Send three sentences today: that you remember, that you are sorry, and that you wish her well.",
+    "isLit": false,
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "A quiet manuscript preserved in amber.",
+      "gemma3": "Soft dust over an open nerve, wondering if forgiveness has an expiration date.",
+      "llama3": "Analysis: Unsent communication with high semantic remorse.",
+      "mistral": "Six revisions, zero transmissions. A clean confession suffocated by hesitation.",
+      "personal": "You wrote this when you were terrified of being seen. You do not need to hide anymore."
+    }
+  },
+  {
+    "id": "hypergraph-db",
+    "title": "hypergraph-engine",
+    "type": "repo",
+    "originDate": "March 03, 2023",
+    "abandonedDate": "March 06, 2023",
+    "daysAbandoned": 1332,
+    "snippet": "// src/storage/mmap_pager.zig\nconst std = @import(\"std\");\npub const HyperNode = struct { id: u64, rank: f32 };",
+    "path": "~/Development/hypergraph-engine/.git",
+    "size": "34.8 KB",
+    "epitaph": {
+      "whatItWas": "A lock-free hypergraph storage engine written in Zig across one manic sleepless weekend.",
+      "whenItDied": "March 06, 2023, commit 3: FIX pointer offset in mmap pager (SEGFAULT).",
+      "whatItWasTryingToBecome": "An alternative to SQLite for knowledge graphs in an 8MB memory footprint.",
+      "fullText": "Here lies an engine conceived in caffeine and killed by pointer arithmetic. It possessed neither tests nor documentation, but for 48 hours it burned with the pure conviction that existing databases had failed."
+    },
+    "revivalStep": "Rip out the mmap pager. Write a 50-line in-memory adjacency list in Python first to prove the query interface.",
+    "isLit": true,
+    "litAt": "2026-10-24T18:30:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "A cathedral with three pillars and no roof.",
+      "gemma3": "Three commits of pure kinetic light.",
+      "llama3": "Technical audit: Custom memory management stalled by segmentation fault.",
+      "mistral": "A 3 AM masterpiece that met a 7 AM segfault.",
+      "personal": "You always jump to writing the storage engine before the interface."
+    }
+  },
+  {
+    "id": "rain-voice-memo",
+    "title": "rain-october-walk.m4a",
+    "type": "voice",
+    "originDate": "November 12, 2022",
+    "abandonedDate": "November 12, 2022",
+    "daysAbandoned": 1446,
+    "snippet": "[whisper.cpp transcription] \"...and the streetlight on Pine is flickering... if you could map peoples habits to electrical fluctuation... forget it...\"",
+    "path": "~/Recordings/VoiceMemos/2022-11-12_23-14.m4a",
+    "size": "4.2 MB",
+    "epitaph": {
+      "whatItWas": "A 42-second audio recording made through wet fabric while wanking in cold rain.",
+      "whenItDied": "The moment footsteps accelerated and the recorder was clicked off.",
+      "whatItWasTryingToBecome": "The opening scene of an interactive radio play.",
+      "fullText": "A voice murmuring into a coat collar while rain strikes the membrane. It was never named or transcribed until now."
+    },
+    "revivalStep": "Listen to the 42 seconds with headphones in the dark. Write down the single sentence you wanted to say.",
+    "isLit": false,
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "Water on wool, breath on metal.",
+      "gemma3": "The sound of someone thinking aloud in an autumn storm.",
+      "llama3": "Acoustic sample: Low SPR, ambient rain artifact.",
+      "mistral": "A spark extinguished by hesitation. Speak louder next time.",
+      "personal": "You always stop talking when someone walks by. Finish the thought."
+    }
+  },
+  {
+    "id": "quiet-bookshop",
+    "title": "the-monastery-press.pdf",
+    "type": "plan",
+    "originDate": "July 19, 2020",
+    "abandonedDate": "August 02, 2020",
+    "daysAbandoned": 2278,
+    "snippet": "PROPOSAL: A subscription service delivering one loose-leaf chapter per week on hand-fed letterpress paper.",
+    "path": "~/Documents/Business/the-monastery-press.pdf",
+    "size": "890 KB",
+    "epitaph": {
+      "whatItWas": "A 14-page business plan with supplier quotes for letterpress presses.",
+      "whenItDied": "When the shipping calculation revealed $18/envelope and the spreadsheet turned red.",
+      "whatItWasTryingToBecome": "A monastery of tactile reading in an era of infinite scroll.",
+      "fullText": "A love letter disguised as a business plan. It died of arithmetic, the gentlest death known to commerce."
+    },
+    "revivalStep": "Do not buy a press. Print one short story on cardstock at the print shop and leave it on a bench.",
+    "isLit": true,
+    "litAt": "2026-10-26T21:10:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "A quiet revolt against screens, undone by the postal service.",
+      "gemma3": "Paper dreams in wax and ink.",
+      "llama3": "Feasibility analysis: Negative gross margins under shipping costs.",
+      "mistral": "The spreadsheet won. But the idea was not about money.",
+      "personal": "You keep trying to build businesses when you want to make art."
+    }
+  },
+  {
+    "id": "half-translated-poem",
+    "title": "rilke-ninth-elegy.md",
+    "type": "poem",
+    "originDate": "September 08, 2021",
+    "abandonedDate": "September 14, 2021",
+    "daysAbandoned": 1870,
+    "snippet": "Hier ist des Saglichen Zeit, hier seine Heimat. Draft: This is the hour of the sayable. Its homeland is here.",
+    "path": "~/Writing/Translations/rilke-ninth-elegy.md",
+    "size": "2.1 KB",
+    "epitaph": {
+      "whatItWas": "A line-by-line translation of Rainer Maria Rilkes Ninth Duino Elegy.",
+      "whenItDied": "Line 44, where German wordplay resisted modern English.",
+      "whatItWasTryingToBecome": "A version of Rilke stripped of Victorian ornamentation.",
+      "fullText": "A translator marooned on an untranslatable preposition. It paused to find the right word for Verwandlung, and forty months drifted by."
+    },
+    "revivalStep": "Translate line 44 imperfectly. The dead poet will not sue you.",
+    "isLit": true,
+    "litAt": "2026-10-27T09:45:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "A holy wrestling with grammar.",
+      "gemma3": "The translator laid down the pen in awe.",
+      "llama3": "Semantic divergence between Germanic modal particles and English.",
+      "mistral": "Paralyzed by perfection.",
+      "personal": "You are allowed to write an ugly first draft."
+    }
+  },
+  {
+    "id": "2019-todo",
+    "title": "2019-intentions.txt",
+    "type": "todo",
+    "originDate": "January 01, 2019",
+    "abandonedDate": "February 11, 2019",
+    "daysAbandoned": 2816,
+    "snippet": "[x] Drink 2L water daily\n[x] Read 30 pages before phone\n[ ] Learn Portuguese\n[ ] Rebuild relationship with father",
+    "path": "~/Notes/Archive/2019-intentions.txt",
+    "size": "820 B",
+    "epitaph": {
+      "whatItWas": "The annual monument to the fictional person we plan to become in January.",
+      "whenItDied": "February 11, 2019, when the third item was skipped.",
+      "whatItWasTryingToBecome": "A blueprint for a calmer, braver self.",
+      "fullText": "It begins with water and leaps immediately to reconciling with family. It died because life is not a checklist."
+    },
+    "revivalStep": "Cross out everything except item 4. Call your father.",
+    "isLit": false,
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "January optimism cracked by February reality.",
+      "gemma3": "Forgive yourself for staying human.",
+      "llama3": "Task completion: 40% failure mode: unrealistic baseline.",
+      "mistral": "One real conversation is worth a hundred checkboxes.",
+      "personal": "You still have not made that call. Call him."
+    }
+  },
+  {
+    "id": "solitary-synth",
+    "title": "spectral-drone.dsp",
+    "type": "draft",
+    "originDate": "December 21, 2023",
+    "abandonedDate": "December 24, 2023",
+    "daysAbandoned": 1038,
+    "snippet": "// Faust audio DSP script\nfreq = hslider(\"freq\", 110, 55, 440, 0.1);\nprocess = os.sawtooth(freq) : fi.lowpass(2, freq * 4);",
+    "path": "~/Audio/Code/spectral-drone.dsp",
+    "size": "1.8 KB",
+    "epitaph": {
+      "whatItWas": "An audio patch synthesizing winter solstice in a still greenhouse.",
+      "whenItDied": "Christmas Eve, 2023, when family arrived.",
+      "whatItWasTryingToBecome": "An endless ambient installation.",
+      "fullText": "A chord that never resolved. It remains silent because the author went to carve turkey."
+    },
+    "revivalStep": "Render 3 minutes to WAV and listen on the train tomorrow.",
+    "isLit": true,
+    "litAt": "2026-10-20T14:22:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "A cold mathematical prayer, paused by warm voices.",
+      "gemma3": "Harmonics waiting like icicles on an eaves.",
+      "llama3": "DSP audited: 2 sawtooth filtered, low overhead.",
+      "mistral": "Three sliders and a sawtooth. Export it.",
+      "personal": "You loved this sound. Why did you pack it away?"
+    }
+  },
+  {
+    "id": "slow-software",
+    "title": "seven-theses-on-slowness.txt",
+    "type": "plan",
+    "originDate": "May 14, 2022",
+    "abandonedDate": "May 18, 2022",
+    "daysAbandoned": 1624,
+    "snippet": "THESIS 1: Software should have seasons.\nTHESIS 2: No notification should ever be urgent...",
+    "path": "~/Writing/Essays/seven-theses-on-slowness.txt",
+    "size": "3.6 KB",
+    "epitaph": {
+      "whatItWas": "An architectural manifesto against instantaneous feedback loops.",
+      "whenItDied": "Thesis 4, when interrupted by a Slack ping.",
+      "whatItWasTryingToBecome": "The foundation for a contemplative software movement.",
+      "fullText": "An essay arguing that digital tools should sleep was struck down by a red badge."
+    },
+    "revivalStep": "Finish Thesis 4 right now.",
+    "isLit": true,
+    "litAt": "2026-10-25T11:00:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "The philosopher defeated by the bell.",
+      "gemma3": "It wanted software to breathe.",
+      "llama3": "Incomplete normative manifesto. Failed at paragraph 4.",
+      "mistral": "Slain by slack while preaching silence. Finish it.",
+      "personal": "You were right about slowness. You were just tired."
+    }
+  },
+  {
+    "id": "novel-ch3",
+    "title": "the-glass-horologist-ch3.docx",
+    "type": "draft",
+    "originDate": "August 12, 2021",
+    "abandonedDate": "August 29, 2021",
+    "daysAbandoned": 1886,
+    "snippet": "Thomas laid the tweezers down. If time is measured in friction, he told the girl, then every clock is just a machine for burning itself down...",
+    "path": "~/Writing/Fiction/the-glass-horologist-ch3.docx",
+    "size": "18.2 KB",
+    "epitaph": {
+      "whatItWas": "Chapter 3 of an unfinished historical novel.",
+      "whenItDied": "When the author fell into a 40-hour Wikipedia rabbit hole on escapements.",
+      "whatItWasTryingToBecome": "A meditation on mortality and railroad time.",
+      "fullText": "Murdered by research. The story drowned in horological textbooks."
+    },
+    "revivalStep": "Make up the clock parts. Fiction is allowed to lie.",
+    "isLit": false,
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "Did not fail in spirit, but in detail.",
+      "gemma3": "Thomas is still waiting with tweezers in hand.",
+      "llama3": "Arc projection pending chapter 4.",
+      "mistral": "Nobody reads for escapements. Get back to writing.",
+      "personal": "You hid behind research instead of writing the dialogue."
+    }
+  },
+  {
+    "id": "pitch-deck-2022",
+    "title": "mnemosyne-seed-deck.key",
+    "type": "plan",
+    "originDate": "February 10, 2022",
+    "abandonedDate": "March 01, 2022",
+    "daysAbandoned": 1702,
+    "snippet": "Slide 4: The Cloud forgets nothing, but understands nothing. Slide 7: Local-first memory infrastructure.",
+    "path": "~/Work/PitchDecks/mnemosyne-seed-deck.key",
+    "size": "12.4 MB",
+    "epitaph": {
+      "whatItWas": "A 12-slide pitch deck for a private memory vault.",
+      "whenItDied": "When an angel asked for a crypto token.",
+      "whatItWasTryingToBecome": "What Pale Hours is today, four years earlier.",
+      "fullText": "The ancestral ghost of this very site. It died because solitude has no Silicon Valley model."
+    },
+    "revivalStep": "Delete the deck. You did not need venture capital, just open models.",
+    "isLit": true,
+    "litAt": "2026-10-23T16:00:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "Suffocated by TAM slides.",
+      "gemma3": "The seed was right; the soil was wrong.",
+      "llama3": "Product hypothesis valid.",
+      "mistral": "Walking away was the right call.",
+      "personal": "You built it anyway. Look around you."
+    }
+  },
+  {
+    "id": "wool-blanket",
+    "title": "144-squares-crochet.txt",
+    "type": "draft",
+    "originDate": "November 04, 2020",
+    "abandonedDate": "December 12, 2020",
+    "daysAbandoned": 2146,
+    "snippet": "Square 1-28: Natural wool (done)\nSquare 29-44: Indigo lot #2 (done)\nSquare 45: Mistake in row 4, basket stashed.",
+    "path": "~/Crafts/blanket-notes.txt",
+    "size": "1.1 KB",
+    "epitaph": {
+      "whatItWas": "The ledger for a queen-size wool blanket.",
+      "whenItDied": "When the recipient vanished and the wool felt too heavy.",
+      "whatItWasTryingToBecome": "Warmth over two pairs of feet in winter.",
+      "fullText": "Forty-four squares of honest Shetland wool resting in a closet."
+    },
+    "revivalStep": "Sew the 44 squares into a pillow. You deserve warmth too.",
+    "isLit": false,
+    "isReleased": true,
+    "releasedAt": "2026-10-25T19:20:00Z",
+    "modelVoices": {
+      "qwen3": "Tension held in yarn, released into silence.",
+      "gemma3": "The yarn remembers the hands.",
+      "llama3": "Partial fabrication: 44/144 squares.",
+      "mistral": "Make the pillow and let the rest go.",
+      "personal": "The yarn wasn't wasted. It was a loving effort."
+    }
+  },
+  {
+    "id": "terminal-theme",
+    "title": "monk-parchment.json",
+    "type": "draft",
+    "originDate": "October 10, 2022",
+    "abandonedDate": "October 11, 2022",
+    "daysAbandoned": 1478,
+    "snippet": "{ \"name\": \"Monk Parchment\", \"background\": \"#F2EDE4\" }",
+    "path": "~/Themes/monk-parchment.json",
+    "size": "640 B",
+    "epitaph": {
+      "whatItWas": "A light-mode terminal theme designed for medieval vellum.",
+      "whenItDied": "When switched to a dark ide at 1 AM.",
+      "whatItWasTryingToBecome": "A sanctuary of daytime readability for prose.",
+      "fullText": "The palette that wanted to save us from black OLED screens."
+    },
+    "revivalStep": "Open this website. It is the living incarnation of your theme.",
+    "isLit": true,
+    "litAt": "2026-10-28T04:00:00Z",
+    "isReleased": false,
+    "modelVoices": {
+      "qwen3": "The dream of paper in a world of pixels.",
+      "gemma3": "Tea stains and iron-gall ink.",
+      "llama3": "Contrast ratio 11.2:1, WCAG AAA true.",
+      "mistral": "You made this theme. It survived.",
+      "personal": "You always loved warm paper. Here it is."
+    }
+  }
+]

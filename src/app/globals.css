@@ -1,26 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bone: #F4F0E8;
+  --vellum: #EFEADF;
+  --linen: #E8E2D5;
+  --chalk: #FAF8F3;
+  --ash: #CFC8B8;
+  --graphite: #2B2A27;
+  --smoke: #6F6B62;
+  --marigold: #D9822B;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-bone: #F4F0E8;
+  --color-vellum: #EFEADF;
+  --color-linen: #E8E2D5;
+  --color-chalk: #FAF8F3;
+  --color-ash: #CFC8B8;
+  --color-graphite: #2B2A27;
+  --color-smoke: #6F6B62;
+  --color-marigold: #D9822B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background-color: #F4F0E8;
+  color: #2B2A27;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-serif-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-editorial {
+  font-family: 'Fraunces', 'Instrument Serif', Georgia, serif;
+}
+
+.font-mono-code {
+  font-family: var(--font-geist-mono), 'JetBrains Mono', monospace;
+}
+
+.hairline-b { border-bottom: 1px solid #CFC8B8; }
+.hairline-t { border-top: 1px solid #CFC8B8; }
+.hairline-l { border-left: 1px solid #CFC8B8; }
+.hairline-r { border-right: 1px solid #CFC8B8; }
+.hairline-all { border: 1px solid #CFC8B8; }
+
+.vellum-sheet {
+  background-color: rgba(239, 234, 223, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #CFC8B8;
+}
+
+.vellum-sheet-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.vellum-sheet-hover:hover {
+  background-color: rgba(250, 248, 243, 0.95);
+  border-color: #2B2A27;
+}
+
+@keyframes filmGrainShift {
+  0% { transform: translate(0, 0); }
+  12.5% { transform: translate(-3%, -2%); }
+  25% { transform: translate(2%, 3%); }
+  37.5% { transform: translate(-2%, 4%); }
+  50% { transform: translate(3%, -3%); }
+  62.5% { transform: translate(-4%, 2%); }
+  75% { transform: translate(1%, -4%); }
+  87.5% { transform: translate(-1%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+.film-grain-layer {
+  animation: filmGrainShift 1s steps(8) infinite;
+  pointer-events: none;
+}
+
+@keyframes flameJitter {
+  0%, 100% { transform: scale(1) translateY(0); }
+  20% { transform: scale(0.96, 1.05) translateY(-1px); }
+  40% { transform: scale(1.04, 0.94) translateY(1px); }
+  60% { transform: scale(0.98, 1.03) translateY(-0.5px); }
+  80% { transform: scale(1.02, 0.98) translateY(0.5px); }
+}
+
+.animate-flame {
+  animation: flameJitter 2.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+::selection {
+  background-color: #E8E2D5;
+  color: #2B2A27;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #CFC8B8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6F6B62;
 }
