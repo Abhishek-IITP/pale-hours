@@ -6,22 +6,22 @@ import { WifiOff, Terminal, Cpu, Database, HardDrive, Shield, Sparkles, Check, A
 import Link from 'next/link';
 
 export default function OpenPage() {
-  const [selectedModel, setSelectedModel] = useState<string>('qwen3');
+  const [selectedModel, setSelectedModel] = useState<string>('gemma3');
 
   const modelSamples: Record<string, { name: string; tag: string; voice: string; quote: string }> = {
+    gemma3: {
+      name: 'Gemma 3 (12B / 4B Int4)',
+      tag: 'Lyrical & Tender (Primary)',
+      voice: 'Google DeepMind open weights. Soft, literary prose attuned to emotional subtlety, memory, and the tactile feeling of paper and ink.',
+      quote:
+        '“Dust over an open nerve. The apology breathes softly in the margin, wondering if forgiveness has an expiration date. It was never read, but the hours spent writing it were honest hours.”',
+    },
     qwen3: {
       name: 'Qwen 3 (8B Q4_K_M)',
       tag: 'Contemplative & Precise',
       voice: 'A quiet, reverent tone that treats deleted code and unfinished letters as archaeological artifacts.',
       quote:
         '“A letter of contrition composed between 2:14 AM and dawn. It arrived at every truth except the courage to be delivered. It spent three years cooling in the ~/Drafts folder, turning slowly from an act of grace into a fossil of pride.”',
-    },
-    gemma3: {
-      name: 'Gemma 3 (4B Int4)',
-      tag: 'Lyrical & Tender',
-      voice: 'Soft, literary prose attuned to emotional subtlety and the tactile feeling of paper and ink.',
-      quote:
-        '“Dust over an open nerve. The apology breathes softly in the margin, wondering if forgiveness has an expiration date. It was never read, but the hours spent writing it were honest hours.”',
     },
     llama3: {
       name: 'Llama 3.3 (8B Q5_K_S)',
@@ -46,7 +46,7 @@ export default function OpenPage() {
     },
   };
 
-  const currentSample = modelSamples[selectedModel] || modelSamples['qwen3'];
+  const currentSample = modelSamples[selectedModel] || modelSamples['gemma3'];
 
   return (
     <div className="w-full min-h-[calc(100vh-4rem)] bg-[#F4F0E8] py-16 px-6">
@@ -113,7 +113,7 @@ export default function OpenPage() {
                 </span>
                 <h3 className="font-serif-display text-xl text-[#2B2A27] mb-2">Local GGUF</h3>
                 <p className="font-editorial italic text-xs text-[#6F6B62]">
-                  Ollama / llama.cpp running Qwen 3 or Gemma 3 locally.
+                  Ollama / llama.cpp running Gemma 3 or Qwen 3 locally.
                 </p>
               </div>
               <span className="mt-4 font-mono-code text-[9px] text-[#D9822B]">LOCAL WEIGHTS</span>
@@ -231,7 +231,7 @@ export default function OpenPage() {
                 <div>
                   <div className="text-[#D9822B] mb-1">FINE-TUNE YOUR OWN CADENCE</div>
                   <p className="font-editorial italic text-sm text-[#6F6B62]">
-                    Swap Qwen 3 for Gemma 3 or train a private LoRA adapter on your personal writing style.
+                    Run Gemma 3 as your primary voice, or train a private LoRA adapter on your personal writing style.
                   </p>
                 </div>
               </div>
@@ -305,7 +305,7 @@ export default function OpenPage() {
             <div>
               <span className="text-[#6F6B62] block mb-1"># 1. Install Ollama and pull an open-weight model</span>
               <code>curl -fsSL https://ollama.com/install.sh | sh</code><br />
-              <code>ollama pull qwen3</code>
+              <code>ollama pull gemma3</code>
             </div>
 
             <div>

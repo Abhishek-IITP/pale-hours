@@ -23,7 +23,7 @@ export default function VigilPage() {
   const [streamedText, setStreamedText] = useState<string>('');
   const [isStreaming, setIsStreaming] = useState<boolean>(false);
   const [streamMode, setStreamMode] = useState<'demo' | 'live'>('demo');
-  const [activeModel, setActiveModel] = useState<string>('qwen3');
+  const [activeModel, setActiveModel] = useState<string>('gemma3');
   const [tokensPerSec, setTokensPerSec] = useState<number>(38);
   const [mouseTilt, setMouseTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -307,9 +307,20 @@ export default function VigilPage() {
             <span className="text-[#2B2A27] font-medium uppercase tracking-wider">THE VIGIL</span>
           </div>
           <span className="text-[#CFC8B8]">|</span>
-          <span className="text-[#6F6B62] hidden sm:inline">
-            MODEL: <span className="text-[#2B2A27] font-semibold">{activeModel.toUpperCase()} (GGUF)</span>
-          </span>
+          <div className="flex items-center gap-1.5 text-[#6F6B62]">
+            <span className="hidden sm:inline">MODEL:</span>
+            <select
+              value={activeModel}
+              onChange={(e) => setActiveModel(e.target.value)}
+              className="bg-[#FAF8F3] hairline-all px-2 py-0.5 text-[10px] text-[#2B2A27] font-semibold uppercase focus:outline-none cursor-pointer"
+            >
+              <option value="gemma3">GEMMA 3 (12B)</option>
+              <option value="qwen3">QWEN 3 (8B)</option>
+              <option value="llama3">LLAMA 3.3 (8B)</option>
+              <option value="mistral">MISTRAL (24B)</option>
+              <option value="personal">PERSONAL LORA</option>
+            </select>
+          </div>
           <span className="text-[#CFC8B8] hidden sm:inline">|</span>
           <span className="text-[#6F6B62] hidden md:inline">
             INFERENCE: <span className="text-[#D9822B]">{tokensPerSec} TOK/S</span>

@@ -265,7 +265,7 @@ export default function HomePage() {
                 A local model writes its epitaph.
               </h3>
               <p className="font-editorial italic text-base text-[#6F6B62] leading-relaxed">
-                Open-weight Qwen 3 or Gemma 3 reads your words without vendor judgment. It does not try to optimize your productivity. It speaks only of what you once cared about, and what it was trying to become.
+                Open-weight Gemma 3 reads your words with quiet, lyrical precision. It does not try to optimize your productivity. It speaks only of what you once cared about, and what it was trying to become.
               </p>
             </div>
 

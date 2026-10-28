@@ -41,8 +41,8 @@ export async function POST(req: NextRequest) {
       isLit: false,
       isReleased: false,
       modelVoices: {
-        qwen3: 'A quiet new arrival.',
-        gemma3: 'Dust stirred by your hand.',
+        gemma3: 'Dust stirred by your hand into living warmth.',
+        qwen3: 'A quiet new arrival preserved in amber.',
         llama3: 'New node recorded in local store.',
         mistral: 'Fresh ink on dry vellum.',
         personal: 'You brought this back into the room.',

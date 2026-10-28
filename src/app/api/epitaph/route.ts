@@ -1,10 +1,9 @@
 import { NextRequest } from 'next/server';
 import { INITIAL_GHOSTS } from '@/data/ghosts';
 
-
 export async function POST(req: NextRequest) {
   try {
-    const { ghostId, action = 'epitaph', mode = 'demo', model = 'qwen3' } = await req.json();
+    const { ghostId, action = 'epitaph', mode = 'demo', model = 'gemma3' } = await req.json();
     const ghost = INITIAL_GHOSTS.find((g) => g.id === ghostId) || INITIAL_GHOSTS[0];
 
     let fullTextToStream = '';
@@ -20,8 +19,8 @@ export async function POST(req: NextRequest) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: model || 'qwen3:latest',
-            prompt: `You are the quiet, literary voice of Pale Hours. Write an epitaph or revival step for this abandoned draft:\nTitle: ${ghost.title}\nExcerpt: ${ghost.snippet}\nAction: ${action}`,
+            model: model || 'gemma3:latest',
+            prompt: `You are the quiet, literary voice of Pale Hours (running Gemma 3). Write a poetic, introspective epitaph or revival step for this abandoned draft:\nTitle: ${ghost.title}\nExcerpt: ${ghost.snippet}\nAction: ${action}`,
             stream: true,
           }),
           signal: AbortSignal.timeout(3000),

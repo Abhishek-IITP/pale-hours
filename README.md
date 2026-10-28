@@ -63,7 +63,7 @@ A multi-tiered Mexican Día de los Muertos altar celebrating creative relics:
 
 ### 4. `/open` — How It Haunts (Architecture & Philosophy)
 The manifesto and interactive technical inspection chamber:
-- **Live Model Voice Swapper**: Toggle between 5 open-weight architectures (`Qwen 2.5/3`, `Gemma 3`, `Llama 3.3`, `Mistral Nemo`, `Personal LoRA`) and watch how each model’s literary voice and temperament alters the same dead git commit.
+- **Live Model Voice Swapper**: Toggle between 5 open-weight architectures (`Gemma 3 (Primary)`, `Qwen 3`, `Llama 3.3`, `Mistral Nemo`, `Personal LoRA`) and watch how each model’s literary voice and temperament alters the same dead git commit.
 - **Architecture Diagram**: Visualizes the local loop from POSIX file reads to llama.cpp/Ollama context windows.
 - **Open-Source vs. Closed Cloud Matrix**: Side-by-side comparison of local sanctity vs. surveillance capitalism.
 - **The Manifesto**: An essay on why AI should mourn with us rather than harvest us.
@@ -108,7 +108,7 @@ bun install
 
 ### 2. (Optional) Pull an Open-Weight Model
 ```bash
-ollama pull qwen2.5:7b
+ollama pull gemma3
 # or: ollama pull gemma2:9b
 # or: ollama pull llama3.2:3b
 ```
