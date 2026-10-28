@@ -30,14 +30,19 @@ export default function HomePage() {
   const sixGhosts = INITIAL_GHOSTS.slice(0, 6);
 
   useEffect(() => {
+    // Refresh ScrollTrigger to recalculate after layout renders
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+
     const ctx = gsap.context(() => {
       // 1. Disappearing sentence scrub
       if (disappearingRef.current) {
         gsap.to('.draft-word', {
           scrollTrigger: {
             trigger: disappearingRef.current,
-            start: 'top 30%',
-            end: 'bottom top',
+            start: 'top 40%',
+            end: 'bottom 20%',
             scrub: 1.2,
           },
           opacity: 0.15,
@@ -47,39 +52,64 @@ export default function HomePage() {
         gsap.to('.strike-line', {
           scrollTrigger: {
             trigger: disappearingRef.current,
-            start: 'top 40%',
-            end: 'bottom top',
+            start: 'top 45%',
+            end: 'bottom 15%',
             scrub: 0.8,
           },
           scaleX: 1,
-          stagger: 0.15,
+          stagger: 0.12,
         });
       }
 
-      // 2. Subtle horizontal drift on scroll without trapping/locking vertical scroll
-      if (horizontalTrainRef.current && horizontalSectionRef.current) {
-        gsap.fromTo(
-          horizontalTrainRef.current,
-          { x: 30 },
-          {
-            x: -60,
-            ease: 'power1.out',
+      // 2. Cinematic Horizontal Drift (Desktop pinned scroll with exact unpin boundary)
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 768px)', () => {
+        if (horizontalSectionRef.current && horizontalTrainRef.current) {
+          const section = horizontalSectionRef.current;
+          const train = horizontalTrainRef.current;
+
+          const getDistance = () => Math.max(0, train.scrollWidth - window.innerWidth + 120);
+
+          gsap.to(train, {
+            x: () => -getDistance(),
+            ease: 'none',
             scrollTrigger: {
-              trigger: horizontalSectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
+              trigger: section,
+              start: 'top top',
+              end: () => `+=${getDistance()}`,
+              pin: true,
+              scrub: 0.9,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
             },
-          }
-        );
-      }
+          });
+        }
+      });
+
+      // 3. Three Rites scroll reveal
+      gsap.utils.toArray<HTMLElement>('.rite-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
+      });
     });
 
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
-    <div className="w-full overflow-x-clip">
+    <div className="w-full">
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-24">
         <FogField />
@@ -161,15 +191,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HORIZONTAL DRIFT OF GHOSTS */}
+      {/* HORIZONTAL DRIFT OF GHOSTS (PINNED CINEMATIC SCROLL) */}
       <section
         ref={horizontalSectionRef}
-        className="relative py-24 bg-[#F4F0E8] hairline-b"
+        className="relative bg-[#F4F0E8] hairline-b min-h-screen flex flex-col justify-center overflow-hidden py-16 md:py-0"
       >
-        <div className="max-w-7xl mx-auto px-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="max-w-7xl w-full mx-auto px-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="font-mono-code text-[10px] tracking-[0.25em] text-[#6F6B62] uppercase mb-2">
-              Drifting Sheets - Six Artifacts
+              Drifting Sheets — Six Artifacts
             </div>
             <h2 className="font-serif-display text-3xl sm:text-5xl text-[#2B2A27]">
               Fossils of intention, resting on your drive.
@@ -179,7 +209,7 @@ export default function HomePage() {
           {/* Quick Carousel Controls */}
           <div className="flex items-center gap-3">
             <span className="font-mono-code text-[10px] text-[#6F6B62] tracking-wider uppercase hidden sm:inline">
-              SCROLL OR BROWSE
+              SCROLL DOWN TO DRIFT &middot; OR USE ARROWS
             </span>
             <button
               onClick={() => {
@@ -210,7 +240,7 @@ export default function HomePage() {
 
         <div
           ref={horizontalTrainRef}
-          className="flex gap-8 px-6 md:px-12 overflow-x-auto no-scrollbar scroll-smooth pb-8"
+          className="flex gap-8 px-6 md:px-12 w-max will-change-transform pb-4"
         >
           {sixGhosts.map((ghost, index) => (
             <div
@@ -267,7 +297,7 @@ export default function HomePage() {
 
         <div className="flex flex-col gap-16">
           {/* Rite I: Find */}
-          <div className="vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="rite-card vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
             <div className="max-w-md">
               <div className="font-mono-code text-[10px] tracking-widest text-[#D9822B] mb-2">
                 RITE I — FIND
@@ -282,18 +312,18 @@ export default function HomePage() {
             <div className="bg-[#FAF8F3] hairline-all p-6 w-full md:w-72 font-mono-code text-xs text-[#6F6B62]">
               <div className="flex items-center gap-2 mb-3 text-[#2B2A27]">
                 <span className="w-2 h-2 rounded-full bg-[#D9822B]" />
-                <span>local_scanner.si</span>
+                <span>local_scanner.sh</span>
               </div>
               <div className="space-y-1">
-                <div>&gt; whisper, 12 files</div>
-                <div>&gt; git repos, 4 dead</div>
+                <div>&gt; whisper: 12 files</div>
+                <div>&gt; git repos: 4 dead</div>
                 <div className="text-[#D9822B]">&gt; 0 bytes transmitted</div>
               </div>
             </div>
           </div>
 
           {/* Rite II: Remember */}
-          <div className="vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="rite-card vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
             <div className="max-w-md">
               <div className="font-mono-code text-[10px] tracking-widest text-[#D9822B] mb-2">
                 RITE II — REMEMBER
@@ -312,7 +342,7 @@ export default function HomePage() {
           </div>
 
           {/* Rite III: Release */}
-          <div className="vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="rite-card vellum-sheet p-8 md:p-12 flex flex-col md:flex-row items-start justify-between gap-8">
             <div className="max-w-md">
               <div className="font-mono-code text-[10px] tracking-widest text-[#D9822B] mb-2">
                 RITE III — RELEASE
@@ -360,18 +390,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <section className="py-24 bg-[#F4F0E8] overflow-hidden">
+      {/* OPPOSING VELOCITY MARQUEES */}
+      <section className="py-24 bg-[#F4F0E8] overflow-hidden hairline-b">
         <div className="space-y-6">
-          <div className="flex whitespace-nowrap gap-8">
-            {Array.from({ length: 4 }).map((_, i) => (
+          <div className="animate-marquee-left flex whitespace-nowrap gap-8">
+            {Array.from({ length: 6 }).map((_, i) => (
               <span key={i} className="font-serif-display italic text-3xl sm:text-4xl text-[#6F6B62]/80">
                 &ldquo;An apology that arrived at every correct truth except courage&rdquo; &mdash; &ldquo;A 3 AM masterpiece that met a 7 AM segfault&rdquo; &mdash;
               </span>
             ))}
           </div>
-          <div className="flex whitespace-nowrap gap-8">
-            {Array.from({ length: 4 }).map((_, i) => (
+          <div className="animate-marquee-right flex whitespace-nowrap gap-8">
+            {Array.from({ length: 6 }).map((_, i) => (
               <span key={i} className="font-serif-display italic text-3xl sm:text-4xl text-[#6F6B62]/60">
                 &ldquo;A translator marooned on an untranslatable preposition&rdquo; &mdash; &ldquo;It wasn&apos;t that I forgot. It wasn&apos;t read.&rdquo; &mdash;
               </span>
@@ -397,12 +427,12 @@ export default function HomePage() {
 
           <Link
             href="/vigil"
-            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#EFEADF] hairline-all text-sm font-mono-code tracking-[0.25em] uppercase text-[#2B2A27] interactive overflow-hidden"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[#2B2A27] text-[#FAF8F3] text-sm font-mono-code tracking-[0.25em] uppercase interactive overflow-hidden"
           >
-            <span className="absolute inset-0 bg-[#FAF8F3] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+            <span className="absolute inset-0 bg-[#D9822B] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             <span className="relative z-10 flex items-center gap-3">
-              <span>LIGHT A CANDLE — ENTER THE VIGIL</span>
-              <ArrowRight className="w-4 h-4 text-[#D9822B] group-hover:translate-x-1 transition-transform" />
+              <span>ENTER THE VIGIL</span>
+              <ArrowRight className="w-4 h-4 text-[#FAF8F3] group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
         </div>
