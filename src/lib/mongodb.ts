@@ -30,7 +30,8 @@ export async function connectToDatabase(): Promise<typeof mongoose | null> {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      serverSelectionTimeoutMS: 2000,
+      serverSelectionTimeoutMS: 6000,
+      dbName: 'pale-hours',
     };
 
     cached.promise = mongoose
